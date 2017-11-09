@@ -17,8 +17,16 @@
             "id": null,
             "name": {
               "value": "capacity",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "seats",
               "synonyms": [
-                "seating"
+                "seating",
+                "seat"
               ]
             }
           }
@@ -83,7 +91,8 @@
         "samples": [
           "count {companyMetadata} at {siteName}",
           "how many {companyMetadata} at {siteName} ",
-          "what is the {companyMetadata} count at {siteName}"
+          "what is the {companyMetadata} count at {siteName}",
+          "how many seats at {siteName}"
         ],
         "slots": [
           {
@@ -100,7 +109,9 @@
             "samples": [
               "employee",
               "employees",
-              "capacity"
+              "capacity",
+              "seats",
+              "seating"
             ]
           }
         ]

@@ -34,6 +34,18 @@ var handlers = {
     let siteName = this.event.request.intent.slots.siteName.value.toLowerCase();
     let metaData = this.event.request.intent.slots.companyMetadata.value.toLowerCase();
 
+    if (metaData == 'seats' || metaData == 'seating') {
+      metaData = 'capacity'
+    }
+    
+    let value = data[metaData]['count'][siteName];
+
+    if (typeof value ==  'undefined') {
+      this.response.speak('I do not have any record of that information about  ' + siteName + ' in the database');
+      this.emit(':responseReady');
+      return;
+    }
+
     var suffix = '';
     if (metaData == 'capacity') {
       suffix = '  seating capacity';
@@ -41,7 +53,7 @@ var handlers = {
       suffix = ' employees';
     }
 
-    this.response.speak(siteName + " site has " + data[metaData]['count'][siteName] + suffix);
+    this.response.speak(siteName + " site has " + value + suffix);
     this.emit(':responseReady');
   },
 };
