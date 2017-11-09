@@ -1,0 +1,19 @@
+{
+  "name": "alorica-ask",
+  "version": "0.0.1",
+  "description": "Alorica ASK prototype",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "skill",
+    "fact"
+  ],
+  "author": "Apps Dev Team",
+  "license": "MIT",
+  "dependencies": {
+    "alexa-sdk": "^1.0.12"
+  }
+}
