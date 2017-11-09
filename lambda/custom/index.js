@@ -3,15 +3,24 @@
 var Alexa = require("alexa-sdk");
 
 const data = {
+  "capacity": {
+    "count": {
+      "cyber gate": 400,
+      "fort": 300,
+      "centris": 1000,
+      "sentris": 1000,
+    }
+  },
   "employees": {
     "count": {
-      "alo": 429,
-      "egs": 550,
       "cyber gate": 16,
-      "fort bonifacio": 61
+      "fort": 61,
+      "centris": 19,
+      "sentris": 19
     }
   }
 };
+
 var handlers = {
   "HelloIntent": function () {
     this.response.speak("Hello, Alorica");
@@ -23,7 +32,16 @@ var handlers = {
   },
   "CountIntent": function() {
     let siteName = this.event.request.intent.slots.siteName.value.toLowerCase();
-    this.response.speak(sitename + " site has " + data.employees.count[siteName] + " employees.")
+    let metaData = this.event.request.intent.slots.companyMetadata.value.toLowerCase();
+
+    var suffix = '';
+    if (metaData == 'capacity') {
+      suffix = '  seating capacity';
+    } else if (metaData == 'employees') {
+      suffix = ' employees';
+    }
+
+    this.response.speak(siteName + " site has " + data[metaData]['count'][siteName] + suffix);
     this.emit(':responseReady');
   },
 };
