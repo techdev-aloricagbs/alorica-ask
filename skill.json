@@ -1,0 +1,21 @@
+{
+  "skillManifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "Alorica"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:427928420763:function:alorica-skill-v1"
+        }
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}
