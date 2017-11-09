@@ -1,0 +1,172 @@
+{
+  "languageModel": {
+    "types": [
+      {
+        "name": "COMPANY_METADATA",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "employees",
+              "synonyms": [
+                "employee"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "capacity",
+              "synonyms": [
+                "seating"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "SITE_NAME",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "fort",
+              "synonyms": [
+                "fort bonifacio"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "cyber gate",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "expert global solutions",
+              "synonyms": [
+                "egs"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "centris",
+              "synonyms": [
+                "sentris",
+                "sentries"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "CountIntent",
+        "samples": [
+          "count {companyMetadata} at {siteName}",
+          "how many {companyMetadata} at {siteName} ",
+          "what is the {companyMetadata} count at {siteName}"
+        ],
+        "slots": [
+          {
+            "name": "siteName",
+            "type": "SITE_NAME",
+            "samples": [
+              "fort bonifacio",
+              "cyber gate"
+            ]
+          },
+          {
+            "name": "companyMetadata",
+            "type": "COMPANY_METADATA",
+            "samples": [
+              "employee",
+              "employees",
+              "capacity"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "HelloIntent",
+        "samples": [
+          "hi",
+          "howdy",
+          "what's up",
+          "say hello",
+          "to greet",
+          "hello"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "alorica"
+  },
+  "prompts": [
+    {
+      "id": "Elicit.Intent-CountIntent.IntentSlot-siteName",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Which site do you want to know?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-CountIntent.IntentSlot-companyMetadata",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What data do you wish to know?"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "intents": [
+      {
+        "name": "CountIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "siteName",
+            "type": "SITE_NAME",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-CountIntent.IntentSlot-siteName"
+            }
+          },
+          {
+            "name": "companyMetadata",
+            "type": "COMPANY_METADATA",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-CountIntent.IntentSlot-companyMetadata"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
