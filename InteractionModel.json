@@ -2,6 +2,39 @@
   "languageModel": {
     "types": [
       {
+        "name": "COMPANY_DB",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "name",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "jomel",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "john",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "arnold",
+              "synonyms": []
+            }
+          }
+        ]
+      },
+      {
         "name": "COMPANY_METADATA",
         "values": [
           {
@@ -139,6 +172,34 @@
         ]
       },
       {
+        "name": "DBIntent",
+        "samples": [
+          "search apps dev by {field} for {fieldValue}",
+          "search employee by {field} for {fieldValue}",
+          "search employee by {field} where value is {fieldValue}",
+          "search employees by {field} where value is {fieldValue}"
+        ],
+        "slots": [
+          {
+            "name": "field",
+            "type": "COMPANY_DB",
+            "samples": [
+              "name"
+            ]
+          },
+          {
+            "name": "fieldValue",
+            "type": "COMPANY_DB",
+            "samples": [
+              "jomel",
+              "arnold",
+              "john",
+              "lanz"
+            ]
+          }
+        ]
+      },
+      {
         "name": "HelloIntent",
         "samples": [
           "hi",
@@ -171,6 +232,24 @@
           "value": "What data do you wish to know?"
         }
       ]
+    },
+    {
+      "id": "Elicit.Intent-DBIntent.IntentSlot-field",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What table field do you want to search?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-DBIntent.IntentSlot-fieldValue",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What record do you want to search?"
+        }
+      ]
     }
   ],
   "dialog": {
@@ -196,6 +275,31 @@
             "confirmationRequired": false,
             "prompts": {
               "elicitation": "Elicit.Intent-CountIntent.IntentSlot-companyMetadata"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DBIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "field",
+            "type": "COMPANY_DB",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-DBIntent.IntentSlot-field"
+            }
+          },
+          {
+            "name": "fieldValue",
+            "type": "COMPANY_DB",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-DBIntent.IntentSlot-fieldValue"
             }
           }
         ]
