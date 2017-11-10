@@ -16,18 +16,36 @@
           {
             "id": null,
             "name": {
-              "value": "capacity",
-              "synonyms": []
+              "value": "seats",
+              "synonyms": [
+                "seating"
+              ]
             }
           },
           {
             "id": null,
             "name": {
-              "value": "seats",
+              "value": "headcount",
               "synonyms": [
-                "seating",
-                "seat"
+                "heads"
               ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "seat",
+              "synonyms": [
+                "seats",
+                "seating"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "employee",
+              "synonyms": []
             }
           }
         ]
@@ -92,7 +110,11 @@
           "count {companyMetadata} at {siteName}",
           "how many {companyMetadata} at {siteName} ",
           "what is the {companyMetadata} count at {siteName}",
-          "how many seats at {siteName}"
+          "how many seats at {siteName}",
+          "{companyMetadata} of {siteName}",
+          "{companyMetadata} count of {siteName}",
+          "for the {companyMetadata} of {siteName}",
+          "for the {companyMetadata} count of {siteName}"
         ],
         "slots": [
           {

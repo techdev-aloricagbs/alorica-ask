@@ -3,7 +3,7 @@
 var Alexa = require("alexa-sdk");
 
 const data = {
-  "capacity": {
+  "seat": {
     "count": {
       "cyber gate": 400,
       "fort": 300,
@@ -34,8 +34,11 @@ var handlers = {
     let siteName = this.event.request.intent.slots.siteName.value.toLowerCase();
     let metaData = this.event.request.intent.slots.companyMetadata.value.toLowerCase();
 
+    // List this down as an array of synonyms
     if (metaData == 'seats' || metaData == 'seating') {
-      metaData = 'capacity'
+      metaData = 'seat';
+    } else if (metaData == 'headcount' || metaData == 'employee' || metaData == 'head' || metaData == 'heads') {
+      metaData = 'employees';
     }
     
     let value = data[metaData]['count'][siteName];
@@ -47,7 +50,7 @@ var handlers = {
     }
 
     var suffix = '';
-    if (metaData == 'capacity') {
+    if (metaData == 'seat') {
       suffix = '  seating capacity';
     } else if (metaData == 'employees') {
       suffix = ' employees';
