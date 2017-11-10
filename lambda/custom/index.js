@@ -22,6 +22,18 @@ const data = {
 };
 
 var handlers = {
+  "AMAZON.CancelIntent": function () {
+    this.response.speak("Goodbye!");
+    this.emit(':responseReady');
+  },
+  "AMAZON.HelpIntent": function() {
+    this.response.speak("Hello, what can I help you wtih?");
+    this.emit(':responseReady');
+  },
+  "AMAZON.StopIntent": function() {
+    this.response.speak("Goodbye!");
+    this.emit(':responseReady');
+  },
   "HelloIntent": function () {
     this.response.speak("Hello, Alorica");
     this.emit(':responseReady');
@@ -40,7 +52,7 @@ var handlers = {
     } else if (metaData == 'headcount' || metaData == 'employee' || metaData == 'head' || metaData == 'heads') {
       metaData = 'employees';
     }
-    
+
     let value = data[metaData]['count'][siteName];
 
     if (typeof value ==  'undefined') {
@@ -63,6 +75,6 @@ var handlers = {
 
 exports.handler = function(event, context, callback){
   var alexa = Alexa.handler(event, context);
-    alexa.registerHandlers(handlers);
-    alexa.execute();
+  alexa.registerHandlers(handlers);
+  alexa.execute();
 };
