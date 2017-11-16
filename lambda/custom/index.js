@@ -1,13 +1,14 @@
 "use strict";
+require('dotenv').config();
 
 var Alexa = require("alexa-sdk");
 
 var pg = require("pg");
 var client = new pg.Client({
-  host: 'your-host',
-  user: 'your-user',
-  password: 'your-password',
-  database: 'your-db-name',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
