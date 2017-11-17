@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "alexa-sdk": "^1.0.12",
+    "asyncawait": "^1.0.6",
     "bluebird": "^3.5.1",
     "dotenv": "^4.0.0",
     "pg-promise": "^7.3.1"
