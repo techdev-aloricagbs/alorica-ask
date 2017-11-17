@@ -4,7 +4,8 @@
   "description": "Alorica ASK prototype",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*"
+    "test": "mocha tests/*",
+    "test-with-coverage": "nyc --reporter=html mocha tests/*"
   },
   "keywords": [
     "alexa",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "alexa-skill-test-framework": "^1.1.2",
     "chai": "^4.1.2",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0"
   }
 }
