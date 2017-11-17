@@ -4,8 +4,8 @@
   "description": "Alorica ASK prototype",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*",
-    "test-with-coverage": "nyc --reporter=html mocha tests/*"
+    "test": "mocha tests",
+    "test-with-coverage": "nyc --reporter=text mocha tests"
   },
   "keywords": [
     "alexa",
