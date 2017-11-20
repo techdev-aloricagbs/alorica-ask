@@ -20,7 +20,7 @@ end
 
 task :deploy_prod => ["init"] do
   # Copy the right config to the .ask directory
-  puts "\nCopying staging configuration.."
+  puts "\nCopying production configuration.."
   cmd = "cp ask-config/production .ask/config"
   fail '\nUnable to copy ask configuration!' unless system(cmd)
   # Copy the right skill.json

@@ -42,6 +42,27 @@
         ]
       },
       {
+        "name": "COMPANY_DB_TABLES",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "employee contact details",
+              "synonyms": [
+                "contact details"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "apps dev",
+              "synonyms": []
+            }
+          }
+        ]
+      },
+      {
         "name": "COMPANY_METADATA",
         "values": [
           {
@@ -184,7 +205,9 @@
           "search apps dev by {field} for {fieldValue}",
           "search employee by {field} for {fieldValue}",
           "search employee by {field} where value is {fieldValue}",
-          "search employees by {field} where value is {fieldValue}"
+          "search employees by {field} where value is {fieldValue}",
+          "check {table} if it exists",
+          "check {table} if it is existing"
         ],
         "slots": [
           {
@@ -203,6 +226,10 @@
               "john",
               "lanz"
             ]
+          },
+          {
+            "name": "table",
+            "type": "COMPANY_DB_TABLES"
           }
         ]
       },
@@ -257,6 +284,15 @@
           "value": "What record do you want to search?"
         }
       ]
+    },
+    {
+      "id": "Elicit.Intent-DBIntent.IntentSlot-table",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What specific table do you want to check?"
+        }
+      ]
     }
   ],
   "dialog": {
@@ -307,6 +343,15 @@
             "confirmationRequired": false,
             "prompts": {
               "elicitation": "Elicit.Intent-DBIntent.IntentSlot-fieldValue"
+            }
+          },
+          {
+            "name": "table",
+            "type": "COMPANY_DB_TABLES",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-DBIntent.IntentSlot-table"
             }
           }
         ]
