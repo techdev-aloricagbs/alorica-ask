@@ -4,3 +4,4 @@ skill.json
 .ask/*
 lambda/custom/coverage/*
 lambda/custom/.nyc*
+.idea
